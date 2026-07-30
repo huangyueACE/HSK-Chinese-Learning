@@ -440,12 +440,17 @@ HSK1级第9课生词练习1
 ===================== -->
 
 
-<div class="section">
-
+<section>
 
 <h2>
-一、生词复习 Vocabulary Review
+第一部分：生词复习
 </h2>
+
+
+<div id="vocabularyBox"></div>
+
+
+</section>
 
 
 <table>
@@ -843,7 +848,64 @@ const vocabulary = [
         translation: "My father is a doctor."
     }
 ];
+// ===============================
+// 第一部分：生成生词列表
+// ===============================
 
+
+const vocabularyBox = document.getElementById("vocabularyBox");
+
+
+if(vocabularyBox){
+
+    vocabulary.forEach(item => {
+
+        const div = document.createElement("div");
+
+        div.className = "word-card";
+
+
+        div.innerHTML = `
+
+        <h3>${item.word}</h3>
+
+        <p class="pinyin">
+        ${item.pinyin}
+        </p>
+
+        <p>
+        <b>English:</b> ${item.english}
+        </p>
+
+
+        <hr>
+
+
+        <p class="sentence-pinyin">
+        ${item.sentencePinyin}
+        </p>
+
+
+        <p>
+        ${item.sentence}
+        </p>
+
+
+        <p>
+        ${item.translation}
+        </p>
+
+
+        `;
+
+
+        vocabularyBox.appendChild(div);
+
+
+    });
+
+
+}
 </script>
 
 
