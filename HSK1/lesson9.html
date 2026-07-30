@@ -264,6 +264,19 @@ body{
 }
 
 
+   .matched{
+
+
+background:#9be7a8 !important;
+
+color:#075b18;
+
+font-weight:bold;
+
+
+}
+
+
 
 /* =========================
 拖拽填空
@@ -1283,82 +1296,109 @@ englishPool.appendChild(div);
 function selectMatch(element,type){
 
 
-element.classList.add("selected");
+    // 如果已经完成，不允许再次选择
+    if(element.classList.contains("matched")){
+        return;
+    }
+
+
+    element.classList.add("selected");
 
 
 
-if(type==="word"){
+    if(type==="word"){
 
-selectedWord=element;
+        selectedWord=element;
+
+    }
+
+
+    if(type==="pinyin"){
+
+        selectedPinyin=element;
+
+    }
+
+
+    if(type==="english"){
+
+        selectedEnglish=element;
+
+    }
+
+
+
+    // 三个选项都选择后判断
+
+    if(
+        selectedWord &&
+        selectedPinyin &&
+        selectedEnglish
+    ){
+
+
+        let isCorrect =
+
+        selectedWord.dataset.answer ===
+        selectedPinyin.dataset.answer
+
+        &&
+
+        selectedWord.dataset.answer ===
+        selectedEnglish.dataset.answer;
+
+
+
+        if(isCorrect){
+
+
+            matchScore++;
+
+
+            // 正确：三个变绿色
+
+            selectedWord.classList.remove("selected");
+            selectedPinyin.classList.remove("selected");
+            selectedEnglish.classList.remove("selected");
+
+
+            selectedWord.classList.add("matched");
+            selectedPinyin.classList.add("matched");
+            selectedEnglish.classList.add("matched");
+
+
+        }
+
+
+        else{
+
+
+            // 错误：取消选择颜色
+
+            selectedWord.classList.remove("selected");
+
+            selectedPinyin.classList.remove("selected");
+
+            selectedEnglish.classList.remove("selected");
+
+
+        }
+
+
+
+        selectedWord=null;
+
+        selectedPinyin=null;
+
+        selectedEnglish=null;
+
+
+
+    }
+
+
 
 }
-
-
-if(type==="pinyin"){
-
-selectedPinyin=element;
-
-}
-
-
-if(type==="english"){
-
-selectedEnglish=element;
-
-}
-
-
-
-if(
-selectedWord &&
-selectedPinyin &&
-selectedEnglish
-){
-
-
-if(
-
-selectedWord.dataset.answer ===
-selectedPinyin.dataset.answer
-
-&&
-
-selectedWord.dataset.answer ===
-selectedEnglish.dataset.answer
-
-){
-
-
-matchScore++;
-
-
-}
-
-
-
-selectedWord.classList.remove("selected");
-
-selectedPinyin.classList.remove("selected");
-
-selectedEnglish.classList.remove("selected");
-
-
-
-selectedWord=null;
-
-selectedPinyin=null;
-
-selectedEnglish=null;
-
-
-
-}
-
-
-
-}
-
-
 
 
 
@@ -1378,12 +1418,6 @@ ${matchScore}/10
 
 
 };
-
-
-
-
-
-
 
 
 
