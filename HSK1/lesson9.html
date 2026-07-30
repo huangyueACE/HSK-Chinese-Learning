@@ -678,7 +678,7 @@ Lesson 9: Where Does Your Son Work?
 
 
 <h2>
-四、看图写句子 Make Sentences （10分）
+四、根据关键词翻译句子 Translate Sentences （10分）
 </h2>
 
 
@@ -705,10 +705,6 @@ Lesson 9: Where Does Your Son Work?
 
 
 </div>
-
-
-
-
 
 
 </div>
@@ -1041,42 +1037,60 @@ const sentenceQuestions=[
 
 
 {
-image:"🐱",
-hint:"我 / 一只",
+hint:"我 / 猫",
+
+english:"I have a cat.",
+
 answer:"我有一只猫。"
+
 },
 
 
+
 {
-image:"👨‍⚕️",
-hint:"医生",
+hint:"他 / 医生",
+
+english:"He is a doctor.",
+
 answer:"他是医生。"
+
 },
 
 
+
 {
-image:"🏥",
-hint:"他 / 医院",
+hint:"医院 / 工作",
+
+english:"He works in a hospital.",
+
 answer:"他在医院工作。"
+
 },
 
 
+
 {
-image:"👦",
-hint:"他儿子 / 在",
+hint:"儿子 / 工作",
+
+english:"Where does his son work?",
+
 answer:"他儿子在哪儿工作？"
+
 },
 
 
+
 {
-image:"🐶",
 hint:"那儿 / 狗",
+
+english:"There is a dog there.",
+
 answer:"那儿有一只狗。"
+
 }
 
 
 ];
-
 
 </script>
 
@@ -1628,18 +1642,44 @@ div.style.margin="30px 0";
 
 div.innerHTML=`
 
-<h2>
-${q.image}
-</h2>
+<div class="sentence-card">
+
+
+<h3>
+第 ${index+1} 题
+</h3>
+
 
 
 <p>
 
-提示词：
+关键词：
 
+<b>
 ${q.hint}
+</b>
 
 </p>
+
+
+
+<hr>
+
+
+<p>
+
+英文：
+
+<br>
+
+${q.english}
+
+</p>
+
+
+
+<hr>
+
 
 
 <input
@@ -1648,24 +1688,22 @@ class="answer-input"
 
 id="sentence${index}"
 
-placeholder="请输入句子"
+placeholder="请输入中文句子"
 
 >
 
 
+</div>
+
 `;
+
 
 
 pictureBox.appendChild(div);
 
 
 
-sentenceAnswers.push(q);
-
-
-
 });
-
 
 
 
@@ -1691,8 +1729,11 @@ document.getElementById(
 
 
 
-if(answer===item.answer){
-
+if(
+answer.replace(/[。！？,.!?]/g,"")
+===
+item.answer.replace(/[。！？,.!?]/g,"")
+){
 
 score+=2;
 
