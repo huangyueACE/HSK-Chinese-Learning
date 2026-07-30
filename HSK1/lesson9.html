@@ -701,8 +701,1016 @@ Lesson 9: Where Does Your Son Work?
 </div>
 
 
+<script>
 
-<!-- JavaScript 第3部分加入 -->
+
+// ===============================
+// HSK1 第9课 生词数据
+// ===============================
+
+
+const vocabulary = [
+
+{
+word:"小",
+pinyin:"xiǎo",
+english:"small; little",
+examplePinyin:"Tā yǒu yí zhī xiǎo māo.",
+example:"他有一只小猫。",
+translation:"He has a little cat."
+},
+
+
+{
+word:"猫",
+pinyin:"māo",
+english:"cat",
+examplePinyin:"Wǒ yǒu yì zhī māo.",
+example:"我有一只猫。",
+translation:"I have a cat."
+},
+
+
+{
+word:"在",
+pinyin:"zài",
+english:"at; in; be located at",
+examplePinyin:"Tā zài Běijīng.",
+example:"他在北京。",
+translation:"He is in Beijing."
+},
+
+
+{
+word:"那儿",
+pinyin:"nàr",
+english:"there",
+examplePinyin:"Tā zài nàr.",
+example:"他在那儿。",
+translation:"He is there."
+},
+
+
+{
+word:"狗",
+pinyin:"gǒu",
+english:"dog",
+examplePinyin:"Wǒ jiā yǒu yì zhī gǒu.",
+example:"我家有一只狗。",
+translation:"My family has a dog."
+},
+
+
+{
+word:"椅子",
+pinyin:"yǐzi",
+english:"chair",
+examplePinyin:"Māo zài yǐzi xiàmiàn.",
+example:"猫在椅子下面。",
+translation:"The cat is under the chair."
+},
+
+
+{
+word:"下面",
+pinyin:"xiàmiàn",
+english:"under; below",
+examplePinyin:"Shū zài zhuōzi xiàmiàn.",
+example:"书在桌子下面。",
+translation:"The book is under the table."
+},
+
+
+{
+word:"下",
+pinyin:"xià",
+english:"under; down",
+examplePinyin:"Māo zài yǐzi xià.",
+example:"猫在椅子下。",
+translation:"The cat is under the chair."
+},
+
+
+{
+word:"在",
+pinyin:"zài",
+english:"at; in",
+examplePinyin:"Nǐ zài nǎr?",
+example:"你在哪儿？",
+translation:"Where are you?"
+},
+
+
+{
+word:"哪儿",
+pinyin:"nǎr",
+english:"where",
+examplePinyin:"Nǐ qù nǎr?",
+example:"你去哪儿？",
+translation:"Where are you going?"
+},
+
+
+{
+word:"工作",
+pinyin:"gōngzuò",
+english:"work; job",
+examplePinyin:"Nǐ zài nǎr gōngzuò?",
+example:"你在哪儿工作？",
+translation:"Where do you work?"
+},
+
+
+{
+word:"儿子",
+pinyin:"érzi",
+english:"son",
+examplePinyin:"Tā érzi zài nǎr gōngzuò?",
+example:"他儿子在哪儿工作？",
+translation:"Where does his son work?"
+},
+
+
+{
+word:"医院",
+pinyin:"yīyuàn",
+english:"hospital",
+examplePinyin:"Tā zài yīyuàn gōngzuò.",
+example:"他在医院工作。",
+translation:"He works in a hospital."
+},
+
+
+{
+word:"医生",
+pinyin:"yīshēng",
+english:"doctor",
+examplePinyin:"Tā shì yīshēng.",
+example:"他是医生。",
+translation:"He is a doctor."
+},
+
+
+{
+word:"爸爸",
+pinyin:"bàba",
+english:"father; dad",
+examplePinyin:"Wǒ bàba shì yīshēng.",
+example:"我爸爸是医生。",
+translation:"My father is a doctor."
+}
+
+];
+
+
+
+// ===============================
+// 第二部分 连线练习数据
+// 10分
+// ===============================
+
+
+const matchWords = [
+
+{
+word:"医生",
+pinyin:"yīshēng",
+english:"doctor"
+},
+
+{
+word:"医院",
+pinyin:"yīyuàn",
+english:"hospital"
+},
+
+{
+word:"爸爸",
+pinyin:"bàba",
+english:"father"
+},
+
+{
+word:"儿子",
+pinyin:"érzi",
+english:"son"
+},
+
+{
+word:"猫",
+pinyin:"māo",
+english:"cat"
+},
+
+{
+word:"狗",
+pinyin:"gǒu",
+english:"dog"
+},
+
+{
+word:"椅子",
+pinyin:"yǐzi",
+english:"chair"
+},
+
+{
+word:"工作",
+pinyin:"gōngzuò",
+english:"work"
+},
+
+{
+word:"下面",
+pinyin:"xiàmiàn",
+english:"under"
+},
+
+{
+word:"哪儿",
+pinyin:"nǎr",
+english:"where"
+}
+
+];
+
+
+
+// ===============================
+// 第三部分 选词填空数据
+// 10题
+// ===============================
+
+
+const fillQuestions=[
+
+
+{
+sentence:"他在医院____。",
+answer:"工作",
+options:["工作","猫","下面"]
+},
+
+
+{
+sentence:"他是____。",
+answer:"医生",
+options:["医生","椅子","哪儿"]
+},
+
+
+{
+sentence:"你儿子在哪儿____？",
+answer:"工作",
+options:["工作","小","狗"]
+},
+
+
+{
+sentence:"我有一只____。",
+answer:"猫",
+options:["猫","医院","爸爸"]
+},
+
+
+{
+sentence:"椅子____有一只狗。",
+answer:"下面",
+options:["下面","哪儿","工作"]
+},
+
+
+{
+sentence:"你爸爸在____工作？",
+answer:"哪儿",
+options:["哪儿","猫","小"]
+},
+
+
+{
+sentence:"那儿有一只____。",
+answer:"狗",
+options:["狗","医生","儿子"]
+},
+
+
+{
+sentence:"我爸爸是____。",
+answer:"医生",
+options:["医生","椅子","下面"]
+},
+
+
+{
+sentence:"他的____在哪儿？",
+answer:"儿子",
+options:["儿子","狗","工作"]
+},
+
+
+{
+sentence:"这是一只____猫。",
+answer:"小",
+options:["小","医院","哪儿"]
+}
+
+];
+
+
+
+// ===============================
+// 第四部分 看图造句
+// 5题
+// ===============================
+
+
+const sentenceQuestions=[
+
+
+{
+image:"🐱",
+hint:"我 / 有 / 一只 / 猫",
+answer:"我有一只猫。"
+},
+
+
+{
+image:"👨‍⚕️",
+hint:"他 / 是 / 医生",
+answer:"他是医生。"
+},
+
+
+{
+image:"🏥",
+hint:"他 / 在 / 医院 / 工作",
+answer:"他在医院工作。"
+},
+
+
+{
+image:"👦",
+hint:"他 / 儿子 / 在哪儿 / 工作",
+answer:"他儿子在哪儿工作？"
+},
+
+
+{
+image:"🐶",
+hint:"那儿 / 有 / 一只 / 狗",
+answer:"那儿有一只狗。"
+}
+
+
+];
+
+
+</script>
+
+
+   
+<script>
+
+
+// =====================================
+// 第一部分：生成生词复习
+// =====================================
+
+
+const vocabularyBox =
+document.getElementById("vocabularyBox");
+
+
+vocabulary.forEach(item=>{
+
+
+let card=document.createElement("div");
+
+card.className="word-card";
+
+
+card.innerHTML=`
+
+<h3>${item.word}</h3>
+
+<div class="pinyin">
+${item.pinyin}
+</div>
+
+
+<div class="english">
+${item.english}
+</div>
+
+
+<div class="example">
+
+
+<p>
+${item.examplePinyin}
+</p>
+
+
+<p>
+${item.example}
+</p>
+
+
+<p>
+${item.translation}
+</p>
+
+
+</div>
+
+
+`;
+
+
+
+vocabularyBox.appendChild(card);
+
+
+
+});
+
+
+
+
+
+// =====================================
+// 第二部分：生词连线
+// =====================================
+
+
+
+let selectedWord=null;
+
+let selectedPinyin=null;
+
+let selectedEnglish=null;
+
+
+let matchScore=0;
+
+
+
+const wordPool=
+document.getElementById("wordPool");
+
+
+const pinyinPool=
+document.getElementById("pinyinPool");
+
+
+const englishPool=
+document.getElementById("englishPool");
+
+
+
+// 随机排序函数
+
+function shuffle(arr){
+
+return arr.sort(()=>Math.random()-0.5);
+
+}
+
+
+
+// 生成三个池
+
+
+let words =
+shuffle([...matchWords]);
+
+
+let pinyins =
+shuffle([...matchWords]);
+
+
+let englishs =
+shuffle([...matchWords]);
+
+
+
+words.forEach(item=>{
+
+
+let div=document.createElement("div");
+
+div.className="match-item";
+
+div.innerText=item.word;
+
+
+div.dataset.answer=item.word;
+
+
+div.onclick=function(){
+
+selectMatch(this,"word");
+
+};
+
+
+wordPool.appendChild(div);
+
+
+});
+
+
+
+
+pinyins.forEach(item=>{
+
+
+let div=document.createElement("div");
+
+div.className="match-item";
+
+div.innerText=item.pinyin;
+
+
+div.dataset.answer=item.word;
+
+
+div.onclick=function(){
+
+selectMatch(this,"pinyin");
+
+};
+
+
+pinyinPool.appendChild(div);
+
+
+});
+
+
+
+
+englishs.forEach(item=>{
+
+
+let div=document.createElement("div");
+
+div.className="match-item";
+
+div.innerText=item.english;
+
+
+div.dataset.answer=item.word;
+
+
+div.onclick=function(){
+
+selectMatch(this,"english");
+
+};
+
+
+englishPool.appendChild(div);
+
+
+});
+
+
+
+
+
+
+function selectMatch(element,type){
+
+
+element.classList.add("selected");
+
+
+
+if(type==="word"){
+
+selectedWord=element;
+
+}
+
+
+if(type==="pinyin"){
+
+selectedPinyin=element;
+
+}
+
+
+if(type==="english"){
+
+selectedEnglish=element;
+
+}
+
+
+
+if(
+selectedWord &&
+selectedPinyin &&
+selectedEnglish
+){
+
+
+if(
+
+selectedWord.dataset.answer ===
+selectedPinyin.dataset.answer
+
+&&
+
+selectedWord.dataset.answer ===
+selectedEnglish.dataset.answer
+
+){
+
+
+matchScore++;
+
+
+}
+
+
+
+selectedWord.classList.remove("selected");
+
+selectedPinyin.classList.remove("selected");
+
+selectedEnglish.classList.remove("selected");
+
+
+
+selectedWord=null;
+
+selectedPinyin=null;
+
+selectedEnglish=null;
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+document.querySelectorAll(
+".section button"
+)[0].onclick=function(){
+
+
+document.getElementById("matchScore").innerHTML=
+
+`
+你的成绩：
+${matchScore}/10
+
+`;
+
+
+
+};
+
+
+
+
+
+
+
+
+
+// =====================================
+// 第三部分：选词填空
+// =====================================
+
+
+const fillBox=
+document.getElementById("fillBox");
+
+
+
+let fillAnswers=[];
+
+
+
+fillQuestions.forEach((q,index)=>{
+
+
+let div=document.createElement("div");
+
+
+div.style.margin="25px 0";
+
+
+
+let options=
+shuffle([...q.options]);
+
+
+
+div.innerHTML=`
+
+<p>
+${index+1}.
+${q.sentence.replace(
+"____",
+`<span class="blank" id="blank${index}">
+____
+</span>`
+)}
+
+</p>
+
+
+<div class="word-bank">
+
+
+${options.map(word=>`
+
+<span class="drag-word"
+onclick="
+chooseWord('${word}',${index})
+">
+
+${word}
+
+</span>
+
+`).join("")}
+
+
+</div>
+
+
+`;
+
+
+
+fillAnswers.push({
+
+index:index,
+
+answer:q.answer,
+
+user:""
+
+});
+
+
+fillBox.appendChild(div);
+
+
+
+});
+
+
+
+
+
+
+function chooseWord(word,index){
+
+
+document.getElementById(
+"blank"+index
+).innerText=word;
+
+
+
+fillAnswers[index].user=word;
+
+
+
+}
+
+
+
+
+
+document.querySelectorAll(
+".section button"
+)[1].onclick=function(){
+
+
+let score=0;
+
+
+let result="";
+
+
+
+fillAnswers.forEach((item,i)=>{
+
+
+if(item.user===item.answer){
+
+
+score++;
+
+
+}
+
+else{
+
+
+result+=`
+
+<p class="wrong">
+
+第${i+1}题
+
+正确答案：
+${item.answer}
+
+</p>
+
+`;
+
+}
+
+
+});
+
+
+
+document.getElementById(
+"fillScore"
+).innerHTML=
+
+`
+
+你的成绩：
+${score}/10
+
+${result}
+
+`;
+
+
+
+};
+
+
+
+
+
+
+
+
+
+// =====================================
+// 第四部分：看图造句
+// =====================================
+
+
+
+const pictureBox=
+document.getElementById(
+"pictureBox"
+);
+
+
+
+let sentenceAnswers=[];
+
+
+
+sentenceQuestions.forEach((q,index)=>{
+
+
+let div=document.createElement("div");
+
+
+div.style.margin="30px 0";
+
+
+div.innerHTML=`
+
+<h2>
+${q.image}
+</h2>
+
+
+<p>
+
+提示词：
+
+${q.hint}
+
+</p>
+
+
+<input
+
+class="answer-input"
+
+id="sentence${index}"
+
+placeholder="请输入句子"
+
+>
+
+
+`;
+
+
+pictureBox.appendChild(div);
+
+
+
+sentenceAnswers.push(q);
+
+
+
+});
+
+
+
+
+
+document.querySelectorAll(
+".section button"
+)[2].onclick=function(){
+
+
+let score=0;
+
+let result="";
+
+
+
+sentenceAnswers.forEach((item,index)=>{
+
+
+let answer=
+document.getElementById(
+"sentence"+index
+).value.trim();
+
+
+
+if(answer===item.answer){
+
+
+score+=2;
+
+
+}
+
+else{
+
+
+result+=`
+
+<p class="wrong">
+
+第${index+1}题
+
+正确答案：
+
+${item.answer}
+
+</p>
+
+`;
+
+
+}
+
+
+});
+
+
+
+document.getElementById(
+"sentenceScore"
+).innerHTML=
+
+`
+
+你的成绩：
+${score}/10
+
+${result}
+
+`;
+
+
+
+};
+
+
+
+
+</script>
 
 
 </body>
